@@ -1,0 +1,58 @@
+Package: ElasticIntegrative
+Title: Elastic Integrative Analyses for the Heterogenous Treatment Effect 
+  Combining a Randomized Trial and a Real-World Evidence Study
+Version: 1.0
+Date: 2024-06-08
+Authors@R: c(
+    person("Shu", "Yang", , "syang24@ncsu.edu", role = c("aut")),
+    person("Chenyin", "Gao", , "cgao6@ncsu.edu", role = c("aut")),
+    person("Shannon", "Holloway", , "shannon.t.holloway@gmail.com", role = c("aut", "cre"))
+    )
+Author: Shu Yang [aut],
+    Chenyin Gao [aut],
+    Shannon Holloway [aut, cre]
+Maintainer: Shannon Holloway <shannon.t.holloway@gmail.com>
+Description: Elastic integrative analyses for the heterogenous treatment effect 
+  combining a randomized trial and a real-world evidence study. When the 
+  real-world evidence data are not subject o bias, the approach combines the 
+  trial and real-world data for efficient estimation of treatment effect. A 
+  data-adaptive procedure is provided to select the test threshold and
+  a bootstrap procedure to estimate elastic confidence intervals.
+  Yang, S., Gao, C., Zeng, D., and Wang, X. (2023) <DOI:10.1093/jrsssb/qkad017>.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports: 
+    expm,
+    MASS,
+    mvtnorm,
+    rootSolve,
+    stats,
+    SuperLearner
+Suggests: 
+    knitr,
+    rmarkdown,
+    withr
+VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Collate: 
+    'stopTests.R'
+    'HTE.R'
+    'bias.R'
+    'bootFunc.R'
+    'cGamma.R'
+    'dataInput.R'
+    'utils.R'
+    'sigma_matrices.R'
+    'scores.R'
+    'sieveEstimator.R'
+    'propensityScore.R'
+    'outcome.R'
+    'psiEst.R'
+    'perturbationEst.R'
+    'elasticHTE.R'
+    's3_methods.R'
+    'toyData.R'

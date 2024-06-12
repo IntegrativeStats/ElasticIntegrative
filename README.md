@@ -104,5 +104,5 @@ In your R console
 
 <pre>
 library(devtools)
-install_github("sth1402/ElasticIntegrative")
+install_github("IntegrativeStats/ElasticIntegrative")
 </pre>

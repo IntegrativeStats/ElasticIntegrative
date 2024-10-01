@@ -58,3 +58,35 @@ test_that("`summary()`", {
 
   expect_equal(summary(test_object), expected)
 })
+
+test_that("`summary()` when no CI present", {
+  test_object <- withr::with_seed(2345L,
+                                  elasticHTE(data.rct, data.rwe,
+                                             n.boot = 0L, n.gamma = 10L,
+                                             n.pert = 10L))
+  # n.estimator x p-1 matrix
+  keep_cols <- c("X1", "X2", "X3")
+  est.mat <- test_object$psi[, keep_cols]
+  ve.mat <- test_object$ve[, keep_cols]
+  
+  # n.estimator x p-1 matrix
+  inf.mat <- matrix(NA, nrow = nrow(est.mat), 1L)
+  sup.mat <- matrix(NA, nrow = nrow(est.mat), 1L)
+  
+  psi <- list()
+  for (i in 1L:nrow(est.mat)) {
+    psi[[rownames(est.mat)[i]]] <- data.frame("est" = est.mat[i, ],
+                                              "ve" = ve.mat[i, ],
+                                              "CI_lower" = inf.mat[i, ],
+                                              "CI_upper" = sup.mat[i, ])
+  }
+  
+  expected <- list("psi" = psi,
+                   "nuispar" = test_object$nuispar[c("gamma", "c.gamma",
+                                                     "Icomb", "Icomb.pval",
+                                                     "eta")],
+                   "Tstat" = test_object$Tstat)
+  
+  
+  expect_equal(summary(test_object), expected)
+})

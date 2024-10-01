@@ -30,8 +30,13 @@ summary.elasticHTE <- function(object, ...) {
   ve.mat <- object$ve[, -1L, drop = FALSE]
 
   # n.estimator x p-1 matrix
-  inf.mat <- object$CIs.inf[, -1L, drop = FALSE]
-  sup.mat <- object$CIs.sup[, -1L, drop = FALSE]
+  if (is.matrix(object$CIs.inf)) {
+    inf.mat <- object$CIs.inf[, -1L, drop = FALSE]
+    sup.mat <- object$CIs.sup[, -1L, drop = FALSE]
+  } else {
+    inf.mat <- matrix(NA, nrow = nrow(est.mat), 1L)
+    sup.mat <- matrix(NA, nrow = nrow(est.mat), 1L)
+  }
 
   psi <- lapply(1L:nrow(est.mat),
                 function(i) {

@@ -1,3 +1,5 @@
+<h5>Development Level: <span style="color:red">Beta</span></h5>
+
 <h2>Elastic Integrative Analysis for Heterogeneous Treatment Effect</h2>
 
 
